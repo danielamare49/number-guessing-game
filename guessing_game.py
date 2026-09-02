@@ -2,8 +2,10 @@ import random
 
 secret = random.randint(1, 100)
 attempts = 0
+max_attempts = 7
+won = False
 
-while True:
+while attempts < max_attempts:
     guess = int(input("Guess the number: "))
 
     attempts += 1
@@ -16,4 +18,8 @@ while True:
 
     else:
         print(f"Correct! You got it in {attempts} attempts.")
+        won = True
         break
+
+if attempts == max_attempts and not won:
+    print(f"Game over! {max_attempts} attempts used. The number was {secret}.")
